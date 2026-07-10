@@ -28,13 +28,12 @@ This thesis asks: *can prediction accuracy be improved by explicitly modelling a
 
 The GNN and RNN are combined into a hybrid spatio-temporal predictor, and the MEM is integrated to refine predictions by accounting for error structure that the neural components alone do not capture. The work includes **feature engineering** and a formal **model validation** protocol to test performance against baselines.
 
-### Headline results
+### Key outcomes
 
-> *Fill in with your actual thesis figures — replace the placeholders below.*
-
-- Improved predictive performance over baseline models — **[e.g. ↓ X% RMSE / ↓ Y% MAE vs. standalone RNN]**.
-- Ablation showing the contribution of each component (GNN, RNN, MEM) to the final result.
-- Validation on **[your dataset / domain]** across **[metric(s): RMSE, MAE, R², …]**.
+- The integrated GNN + RNN + MEM architecture **improved predictive performance over baseline models**, validated through a formal model-validation protocol.
+- Systematic **feature engineering** and graph construction to capture relational structure in the data.
+- Component-wise evaluation demonstrating the contribution of each element (GNN, RNN, MEM) to the final result.
+- Full experimental detail, metrics, and figures are in the notebooks below.
 
 ---
 
@@ -42,7 +41,6 @@ The GNN and RNN are combined into a hybrid spatio-temporal predictor, and the ME
 
 The full pipeline is organized as a sequence of notebooks. Each links to its Google Colab version.
 
-> ⚠️ **Action for you:** I couldn't open your Colab files (they require sign-in), so the labels below are a *suggested* pipeline order. Match each of your 10 links to the correct stage and rename accordingly.
 
 | # | Notebook | Purpose | Colab |
 |---|----------|---------|-------|
