@@ -29,20 +29,11 @@ This thesis asks: *can prediction accuracy be improved by explicitly modelling a
 The GNN and RNN are combined into a hybrid spatio-temporal predictor, and the MEM is integrated to refine predictions by accounting for error structure that the neural components alone do not capture. The work includes **feature engineering** and a formal **model validation** protocol to test performance against baselines.
 
 ### Headline results
-
-> *Fill in with your actual thesis figures — replace the placeholders below.*
-
-- Improved predictive performance over baseline models — **[e.g. ↓ X% RMSE / ↓ Y% MAE vs. standalone RNN]**.
+- Improved predictive performance over baseline models — **[↓ 0.6% - 0.35% RMSE / Increased 1% - 127% R-sqaured vs. baseline models]**.
 - Ablation showing the contribution of each component (GNN, RNN, MEM) to the final result.
-- Validation on **[your dataset / domain]** across **[metric(s): RMSE, MAE, R², …]**.
-
----
-
-## Notebooks
+- Validation on **[Combined Cycle Power Plant dataset (CCPP), Beijing PMI2.5 dataset, Bike-Sharing dataset]** across **[metrics: RMSE, R², …]**.
 
 The full pipeline is organized as a sequence of notebooks. Each links to its Google Colab version.
-
-> ⚠️ **Action for you:** I couldn't open your Colab files (they require sign-in), so the labels below are a *suggested* pipeline order. Match each of your 10 links to the correct stage and rename accordingly.
 
 | # | Notebook | Purpose | Colab |
 |---|----------|---------|-------|
@@ -56,24 +47,6 @@ The full pipeline is organized as a sequence of notebooks. Each links to its Goo
 | 08 | `08_combined_model.ipynb` | Full GNN + RNN + MEM architecture | [Open](https://colab.research.google.com/drive/14aTuLUi5M0e2BBg-NQDDl6q4lnD1oP4q?usp=sharing) |
 | 09 | `09_model_validation.ipynb` | Validation protocol and metric evaluation | [Open](https://colab.research.google.com/drive/1zr6xmQoVQDcWUKIZjU0MpEm26s2RaM-w?usp=sharing) |
 | 10 | `10_results_and_ablation.ipynb` | Results, ablation study, and visualizations | [Open](https://colab.research.google.com/drive/1KqaxXjT942W9Q4P4przbkXgSw5293BMM?usp=sharing) |
-
----
-
-## Repository structure
-
-```
-mem-gnn-rnn-continuous-prediction/
-├── README.md
-├── notebooks/              # The 10 notebooks above, exported from Colab
-├── src/                    # (optional) refactored model / util code
-│   ├── models/
-│   └── utils/
-├── data/                   # sample or link to dataset (do not commit large/private data)
-├── figures/                # key result plots for the README
-└── requirements.txt
-```
-
----
 
 ## Tech stack
 
