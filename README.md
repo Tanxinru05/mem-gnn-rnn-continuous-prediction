@@ -26,7 +26,7 @@ This thesis asks: *can prediction accuracy be improved by explicitly modelling a
 | **Recurrent Neural Network (RNN)** | Models how signals evolve over time | Temporal / sequential dependence |
 | **Multidimensional Error Model (MEM)** | Models the structure of residual error across dimensions | Correlated, structured prediction error |
 
-The GNN and RNN are combined into a hybrid spatio-temporal predictor, and the MEM is integrated to refine predictions by accounting for error structure that the neural components alone do not capture. The work includes **feature engineering** and a formal **model validation** protocol to test performance against baselines.
+Concretely, the graph component is instantiated as a **Temporal Graph Attention Network (TGAT)** and the sequential component as a **CNN–BiLSTM–Attention** stack; robustness to structured error is probed through **noise-injection experiments**, and model behaviour is examined with **SHAP interpretability**. The GNN and RNN are combined into a hybrid spatio-temporal predictor, and the MEM is integrated to refine predictions by accounting for error structure that the neural components alone do not capture. The work includes **feature engineering** and a formal **model validation** protocol to test performance against baselines.
 
 ### Key outcomes
 
@@ -39,35 +39,28 @@ The GNN and RNN are combined into a hybrid spatio-temporal predictor, and the ME
 
 ## Notebooks
 
-The full pipeline is organized as a sequence of notebooks. Each links to its Google Colab version.
+The experiments are organized by dataset and purpose. Each notebook renders directly on GitHub, or can be run in Colab.
 
+| Notebook | What it covers | Colab |
+|----------|----------------|-------|
+| [`Power_Plant__noise_injection_all_models.ipynb`](./Power_Plant__noise_injection_all_models.ipynb) | **Full model suite** on the UCI Combined Cycle Power Plant dataset — CNN–BiLSTM–Attention, TGAT, and baselines — with **noise-injection experiments** testing robustness under structured error | [Open](https://colab.research.google.com/github/Tanxinru05/mem-gnn-rnn-continuous-prediction/blob/main/Power_Plant__noise_injection_all_models.ipynb) |
+| [`power_plant_tgat_only.ipynb`](./power_plant_tgat_only.ipynb) | **TGAT in isolation** — the Temporal Graph Attention component evaluated on its own (Power Plant) | [Open](https://colab.research.google.com/github/Tanxinru05/mem-gnn-rnn-continuous-prediction/blob/main/power_plant_tgat_only.ipynb) |
+| [`Interpretability_for_Power_Plant_DataSet.ipynb`](./Interpretability_for_Power_Plant_DataSet.ipynb) | **Interpretability** — SHAP-based analysis of what drives the trained models' predictions (Power Plant) | [Open](https://colab.research.google.com/github/Tanxinru05/mem-gnn-rnn-continuous-prediction/blob/main/Interpretability_for_Power_Plant_DataSet.ipynb) |
+| [`CNN+BILSTM+Attn__Beijing_PM2_5.ipynb`](./CNN%2BBILSTM%2BAttn__Beijing_PM2_5.ipynb) | **CNN–BiLSTM–Attention** applied to the Beijing PM2.5 air-pollution dataset | [Open](https://colab.research.google.com/github/Tanxinru05/mem-gnn-rnn-continuous-prediction/blob/main/CNN%2BBILSTM%2BAttn__Beijing_PM2_5.ipynb) |
+| [`Pollution_baselines_2.ipynb`](./Pollution_baselines_2.ipynb) | **Baseline models** on the pollution dataset, for comparison against the deep architectures | [Open](https://colab.research.google.com/github/Tanxinru05/mem-gnn-rnn-continuous-prediction/blob/main/Pollution_baselines_2.ipynb) |
+| [`Bike Sharing Dataset_all_models.ipynb`](./Bike%20Sharing%20Dataset_all_models.ipynb) | **Full model suite** on the Bike Sharing dataset — testing generalization to a third domain | [Open](https://colab.research.google.com/github/Tanxinru05/mem-gnn-rnn-continuous-prediction/blob/main/Bike%20Sharing%20Dataset_all_models.ipynb) |
 
-| # | Notebook | Purpose | Colab |
-|---|----------|---------|-------|
-| 01 | `01_data_preprocessing.ipynb` | Load, clean, and structure the raw dataset | [Open](https://colab.research.google.com/drive/1u03zpU9A0sZxCp1IYnxcfYJfpKMBhbB5?usp=sharing) |
-| 02 | `02_exploratory_analysis.ipynb` | EDA: distributions, correlations, temporal patterns | [Open](https://colab.research.google.com/drive/1prpOBR6mvu154OIfCY9FM2pCoBpz85B3?usp=sharing) |
-| 03 | `03_feature_engineering.ipynb` | Construct features and graph inputs | [Open](https://colab.research.google.com/drive/1hY9bsV3CTVE2f1bs_Ea2RaFQINv0kcTn?usp=sharing) |
-| 04 | `04_baseline_models.ipynb` | Baseline predictors for comparison | [Open](https://colab.research.google.com/drive/1ZNTqPjiqDS9hPWM15xlMphQc6sGlRYxt?usp=sharing) |
-| 05 | `05_gnn_component.ipynb` | Graph Neural Network module | [Open](https://colab.research.google.com/drive/1yVWE_FuSnor-Fl-qNac56_UW0dtq9iXF?usp=sharing) |
-| 06 | `06_rnn_component.ipynb` | Recurrent Neural Network module | [Open](https://colab.research.google.com/drive/12Y3i7lUHquN3ysRgkfff697nMOuU4028?usp=sharing) |
-| 07 | `07_mem_integration.ipynb` | Multidimensional Error Model integration | [Open](https://colab.research.google.com/drive/1FjIDdv01kGLbcCBm75ElsRUK9tz2oM8N?usp=sharing) |
-| 08 | `08_combined_model.ipynb` | Full GNN + RNN + MEM architecture | [Open](https://colab.research.google.com/drive/14aTuLUi5M0e2BBg-NQDDl6q4lnD1oP4q?usp=sharing) |
-| 09 | `09_model_validation.ipynb` | Validation protocol and metric evaluation | [Open](https://colab.research.google.com/drive/1zr6xmQoVQDcWUKIZjU0MpEm26s2RaM-w?usp=sharing) |
-| 10 | `10_results_and_ablation.ipynb` | Results, ablation study, and visualizations | [Open](https://colab.research.google.com/drive/1KqaxXjT942W9Q4P4przbkXgSw5293BMM?usp=sharing) |
-
----
+**Datasets:** UCI Combined Cycle Power Plant · Beijing PM2.5 · Bike Sharing — three continuous-prediction benchmarks with different relational and temporal characteristics.
 
 ## Repository structure
 
 ```
 mem-gnn-rnn-continuous-prediction/
 ├── README.md
-├── notebooks/              # The 10 notebooks above, exported from Colab
-├── src/                    # (optional) refactored model / util code
-│   ├── models/
-│   └── utils/
-├── data/                   # sample or link to dataset (do not commit large/private data)
-├── figures/                # key result plots for the README
+├── *.ipynb                 # experiment notebooks (see table above)
+├── data/                   # dataset notes / samples
+├── figures/                # key result plots
+├── src/                    # (optional) refactored model & utility code
 └── requirements.txt
 ```
 
@@ -86,7 +79,7 @@ mem-gnn-rnn-continuous-prediction/
 git clone https://github.com/your-username/mem-gnn-rnn-continuous-prediction.git
 cd mem-gnn-rnn-continuous-prediction
 pip install -r requirements.txt
-# open notebooks/ in Jupyter or Colab and run in order 01 → 10
+# open any notebook in Jupyter, or click its Colab badge to run in the cloud
 ```
 
 ---
